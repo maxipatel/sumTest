@@ -11,7 +11,7 @@ import net.minidev.json.JSONObject;
 public class SumController {
 	
 	@RequestMapping(path = "/compute", method = RequestMethod.GET)
-	public Data getBook(@RequestParam String action ,@RequestParam int num1, @RequestParam int num2) {
+	public static Data getBook(@RequestParam String action ,@RequestParam int num1, @RequestParam int num2) {
 		try {
 			int result;
 			switch(action) {
