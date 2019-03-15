@@ -1,4 +1,4 @@
-package restGradle;
+package rest.gradle;
 
 public class Data {
 	private final String ok;

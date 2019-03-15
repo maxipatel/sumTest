@@ -1,17 +1,18 @@
-package restGradle;
+package rest.gradle;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import net.minidev.json.JSONObject;
-
 @RestController
-public class SumController {
+public final class SumController {
 	
-	@RequestMapping(path = "/compute", method = RequestMethod.GET)
-	public static Data getBook(@RequestParam String action ,@RequestParam int num1, @RequestParam int num2) {
+	private SumController() {
+	      //not called
+	   }
+	
+	@GetMapping(path = "/compute")
+	public static  Data getBook(@RequestParam String action ,@RequestParam int num1, @RequestParam int num2) {
 		try {
 			int result;
 			switch(action) {
