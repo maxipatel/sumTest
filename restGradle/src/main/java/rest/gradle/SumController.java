@@ -12,7 +12,7 @@ public final class SumController {
 	   }
 	
 	@GetMapping(path = "/compute")
-	public static  Data getBook(@RequestParam String action ,@RequestParam int num1, @RequestParam int num2) {
+	public  Data getBook(@RequestParam String action ,@RequestParam int num1, @RequestParam int num2) {
 		try {
 			int result;
 			switch(action) {

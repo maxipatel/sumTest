@@ -7,13 +7,36 @@ buildscript {
     }
 }
 
+plugins {
+  id "org.sonarqube" version "2.6.2"
+}
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'jacoco'
 
+description = 'Example of SonarQube Scanner for Gradle Usage'
+version = '1.0'
 
+jacoco {
+toolVersion = "0.7.9"
+reportsDir = file("$buildDir/customJacocoReportDir")
+}
+
+jacocoTestReport {
+reports {
+xml.enabled false
+csv.enabled false
+html.destination file("${buildDir}/jacocoHtml")
+}
+}
+sonarqube {
+    properties {
+        property 'sonar.projectName', 'Example of SonarQube Scanner for Gradle Usage'
+    }
+}
 bootJar {
     baseName = 'restGradle'
     version =  '0.1.0'
@@ -32,6 +55,7 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
 	compile("com.fasterxml.jackson.core:jackson-core")
     testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile group: 'org.mockito', name: 'mockito-core', version: '2.1.0'
     testCompile('junit:junit')
 
 }
